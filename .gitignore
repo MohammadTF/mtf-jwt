@@ -1,0 +1,6 @@
+requests
+node_modules
+src
+tsconfig.json
+.env
+.vscode
