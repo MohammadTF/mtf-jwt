@@ -42,18 +42,22 @@ route.post('/token', (req, res) => {
             return res.sendStatus(403);
         const _payload = payload;
         const accessToken = jsonwebtoken_1.sign({ name: _payload.name }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: process.env.JWT_EXPIRY });
-        return res.status(200).json({ accessToken });
+        return res.status(200).json({ status: true, data: accessToken, message: '' });
     });
 });
 route.post('/login', (req, res) => {
     const body = req.body;
-    const username = body.username;
+    const { username, password } = body;
+    const _username = "admin";
+    const _password = "admin";
+    if (!(username === _username && password === _password))
+        return res.sendStatus(401);
     const payload = {
         name: username
     };
     const accessToken = jsonwebtoken_1.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: process.env.JWT_EXPIRY });
     const refreshToken = jsonwebtoken_1.sign(payload, process.env.REFRESH_TOKEN_SECRET);
     refreshToks.push(refreshToken);
-    return res.status(200).json({ accessToken, refreshToken });
+    return res.status(200).json({ status: true, data: { accessToken, refreshToken }, message: '' });
 });
 exports.default = route;
