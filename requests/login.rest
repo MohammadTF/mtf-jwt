@@ -1,0 +1,26 @@
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+    "username": "admin",  
+    "password": "admin"  
+}
+
+###
+
+POST {{baseUrl}}/token
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSmltIiwiaWF0IjoxNTk1NDg3NDA1fQ.lxbooQAc8CgCFXXyulD52EX0Z942iF5d372mOjKd_OQ"  
+}
+
+###
+
+
+DELETE  {{baseUrl}}/logout
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSmltIiwiaWF0IjoxNTk1NDg3MDM4fQ.5jZNapIeHG0mdX3Ld9FieQCRUcAWwP0ig6d9lr7x2YY"  
+}
